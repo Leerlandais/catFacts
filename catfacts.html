@@ -8,17 +8,26 @@
     </head>
     <body>
         <h1>Random Facts Page</h1>
-        <h3 id="hideme">Here's a random fact about Cats : <span id="earlyFact"></span></h3>
-        <div id="factList"></div>
+        <h3 id="hideme">Here's a random fact about a <span id="earlyFact"></span></h3>
+        <ul id="factList"></ul>
         <form id="animalForm">
             <label for="animalCat">Cat</label>
-            <input type="radio" name="animalType" value="cat" id="animalCat">
+            <input type="radio" name="animalType" value="cat" id="animalCat"><br>
             <label for="animalDog">Dog</label>
-            <input type="radio" name="animalType" value="dog" id="animalDog">
+            <input type="radio" name="animalType" value="dog" id="animalDog"><br>
             <label for="animalHorse">Horse</label>
-            <input type="radio" name="animalType" value="horse" id="animalHorse">
-
-            <button type="submit">Get Fact</button>
+            <input type="radio" name="animalType" value="horse" id="animalHorse"><br>
+            <select name="animalAmount" id="animalAmount">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+            <button type="submit">Get Info</button>
         </form>
         <script src="catfacts.js"></script>
     </body>
