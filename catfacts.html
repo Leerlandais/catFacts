@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cat Facts</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1>Random Facts Page</h1>
+        <h3 id="hideme">Here's a random fact about Cats : <span id="earlyFact"></span></h3>
+        <div id="factList"></div>
+        <form id="animalForm">
+            <label for="animalCat">Cat</label>
+            <input type="radio" name="animalType" value="cat" id="animalCat">
+            <label for="animalDog">Dog</label>
+            <input type="radio" name="animalType" value="dog" id="animalDog">
+            <label for="animalHorse">Horse</label>
+            <input type="radio" name="animalType" value="horse" id="animalHorse">
+
+            <button type="submit">Get Fact</button>
+        </form>
+        <script src="catfacts.js"></script>
+    </body>
+    </html>
