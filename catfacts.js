@@ -6,7 +6,7 @@ const animalForm = document.getElementById("animalForm");
 let factList = document.getElementById("factList");
 
 getAnimalFacts(); // AS SOON AS THE PAGE LOADS, RUN THE FUNCTION AND DISPLAY A FACT
-
+savesUsed = sessionStorage.getItem("factCount");
 animalForm.addEventListener('submit', function(event) { 
     event.preventDefault();         // DON'T ALLOW THE FORM TO SUBMIT
     wipeAnimalFacts();              
@@ -69,5 +69,13 @@ function makeLinks () {
 }
 
 function saveFact () {
-    console.log(this);
+    if (savesUsed > 7) {
+        alert("No saves left for this session, sorry");
+    }else {
+        savesUsed++;
+    $.get (`https://cat-fact.herokuapp.com/facts/random?_id=${this.id}`, (fact) => {
+        sessionStorage.setItem('factCount', savesUsed);
+        sessionStorage.setItem('myFact'+savesUsed, fact.text);
+    })
+}
 }
