@@ -1,7 +1,7 @@
 
 // AS USUAL, CREATE VARIABLES FOR THE HTML ITEMS
 const hideMe = document.getElementById("hideMe");
-const earlyFact = document.getElementById("earlyFact");
+const earlyFact = document.querySelector(".earlyFact");
 const animalForm = document.getElementById("animalForm");
 let factList = document.getElementById("factList");
 
@@ -32,24 +32,42 @@ function getAnimalFacts(animal = "cat", amount = 1) {       // DEFAULT SETTINGS 
     
     amount < 2 ?                                                                                                    // TURNS OUT THAT TERNARIES CAN BE MORE THAN ONE LINE 
     $.get (`https://cat-fact.herokuapp.com/facts/random?animal_type=${animal}&amount=${amount}`, (facts) => {
-            let fact = facts.text;
+        console.log("1 : ",facts._id);
+        let fact = facts.text;
+        earlyFact.setAttribute("id", facts._id);
         earlyFact.textContent = "a "+animal+" : "+fact;
     }) 
     : 
     $.get (`https://cat-fact.herokuapp.com/facts/random?animal_type=${animal}&amount=${amount}`, (facts) => {
         for (let fact of facts) {
-            thisFact = fact.text
+            thisFact = fact
             makeAnimalList (thisFact);
         }
     })
-   
+    setTimeout(() => {
+        makeLinks();
+    }, 500);
 }
 
 function makeAnimalList (fact) {                        // CREATE THE LIST-ITEMS, INSERT THE INFO AND CREATE THE LISTS
+    console.log("2 : ",fact._id);
     let LI = document.createElement("li");
-        LI.textContent = fact
+     LI.setAttribute("class",`linkMaker`);
+     LI.setAttribute("id",`${fact._id}`);
+        LI.textContent = fact.text;
         factList.appendChild(LI);
 }
 
 
 
+function makeLinks () {
+   linkCount =  document.querySelectorAll(".linkMaker");
+   console.log(linkCount.length);
+    for (let i = 0; i < linkCount.length; i++) {
+        linkCount[i].addEventListener("click", saveFact);
+    }
+}
+
+function saveFact () {
+    console.log(this);
+}
